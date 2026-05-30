@@ -111,6 +111,23 @@ struct DetailView: View {
     // Funkcja aktualizująca
     private func updatePickupDateToLastPlanned() {
         withAnimation {
+            let address = schedule.address
+            let executionDate = schedule.nextPickupDate
+            let predicate = #Predicate<PickupHistory> { record in
+                record.address == address && record.executionDate == executionDate
+            }
+            let descriptor = FetchDescriptor(predicate: predicate)
+            let exists = ((try? modelContext.fetchCount(descriptor)) ?? 0) > 0
+
+            if !exists {
+                let history = PickupHistory(
+                    executionDate: executionDate,
+                    address: address,
+                    confirmedAt: Date()
+                )
+                modelContext.insert(history)
+            }
+
             // 1. Przypisz datę ostatniego wywozu na tę, która właśnie minęła
             schedule.lastPickupDate = schedule.nextPickupDate
             

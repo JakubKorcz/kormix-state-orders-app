@@ -14,6 +14,8 @@ struct DashboardView: View {
     
     @Environment(\.modelContext) private var modelContext
     @State private var showingAddScreen = false
+    @State private var showingHistory = false
+    @State private var showingPinSettings = false
     
     private var sortedSchedules: [Schedule] {
         schedules.sorted { $0.effectiveNextDate < $1.effectiveNextDate }
@@ -78,6 +80,16 @@ struct DashboardView: View {
                 }
             }
             .toolbar {
+                ToolbarItemGroup(placement: .topBarLeading) {
+                    Button(action: { showingHistory = true }) {
+                        Image(systemName: "clock.arrow.circlepath")
+                            .font(.title3)
+                    }
+                    Button(action: { showingPinSettings = true }) {
+                        Image(systemName: "gearshape")
+                            .font(.title3)
+                    }
+                }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: { showingAddScreen = true }) {
                         Image(systemName: "plus.circle.fill")
@@ -87,6 +99,16 @@ struct DashboardView: View {
             }
             .sheet(isPresented: $showingAddScreen) {
                 AddScheduleView()
+            }
+            .sheet(isPresented: $showingHistory) {
+                NavigationStack {
+                    PickupHistoryView()
+                }
+            }
+            .sheet(isPresented: $showingPinSettings) {
+                NavigationStack {
+                    PinSettingsView()
+                }
             }
         }
     }
