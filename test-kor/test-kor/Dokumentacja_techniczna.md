@@ -2,7 +2,7 @@
 
 ## 1. Stos technologiczny
 
-Aplikacja została zbudowana w języku **Swift 5.0** z wykorzystaniem frameworka **SwiftUI** dostępnego od iOS 18.4 do budowy deklaratywnego interfejsu użytkownika. Do trwałego przechowywania danych wykorzystano **SwiftData** (również od iOS 18.4) będący osadzonym w języku ORM na bazie SQLite. Mechanizm haszowania kodu PIN zrealizowano przy użyciu **CryptoKit** (algorytm SHA256). Podstawowe operacje na datach i typach danych oparto na frameworku **Foundation**.
+Aplikacja została zbudowana w języku **Swift** z wykorzystaniem frameworka **SwiftUI** dostępnego od iOS 18.4 do budowy deklaratywnego interfejsu użytkownika. Do trwałego przechowywania danych wykorzystano **SwiftData** (również od iOS 18.4) będący osadzonym w języku ORM na bazie SQLite. Mechanizm haszowania kodu PIN zrealizowano przy użyciu **CryptoKit** (algorytm SHA256). Podstawowe operacje na datach i typach danych oparto na frameworku **Foundation**.
 
 Brak zależności zewnętrznych – aplikacja korzysta wyłącznie z frameworków Apple.
 
@@ -10,7 +10,7 @@ Brak zależności zewnętrznych – aplikacja korzysta wyłącznie z frameworkó
 
 ## 2. Architektura aplikacji
 
-Aplikacja zbudowana w oparciu o architekturę MV (Model-View) z SwiftData jako warstwą modelu. SwiftUI pełni rolę zarówno widoku, jak i kontrolera poprzez mechanizmy @Query, @Bindable i @Environment.
+Aplikacja zbudowana w oparciu o architekturę MV (Model-View) z SwiftData jako warstwą modelu. SwiftUI pełni rolę zarówno widoku, jak i kontrolera poprzez mechanizmy @Query, @Bindable.
 
 Głównym punktem wejścia jest struktura test_korApp zgodna z protokołem App, która konfiguruje modelContainer dla modeli Schedule i PickupHistory, ustawia polski locale oraz zielony kolor akcentu. Nakłada ona również pełnoekranową blokadę PinLockView, gdy PIN jest ustawiony, a aplikacja przechodzi do stanu background lub inactive.
 
@@ -57,8 +57,6 @@ Punkt wejścia aplikacji. Konfiguruje modelContainer dla modeli Schedule i Picku
 ### 4.2 DashboardView (DashboardView.swift)
 
 Główny ekran aplikacji wyświetlający listę adresów posortowanych według najbliższej daty wywozu (effectiveNextDate). Pasek narzędzi zawiera przyciski do otwierania historii wywozów, ustawień PIN oraz dodawania nowego adresu. Każdy wiersz listy pokazuje adres, częstotliwość w dniach, datę ostatniego i następnego wywozu. Daty są kolorowane: pomarańczowy gdy data została ustawiona ręcznie, czerwony gdy termin jest zaległy (przed dzisiejszą datą) oraz podstawowy (primary) gdy termin jest w przyszłości.
-
-Widok wykorzystuje mechanizm horizontalSizeClass do dostosowania układu – na wąskich ekranach (compact) stosuje zwarty wiersz z mniejszymi fontami, a na szerokich (regular) używa przestronniejszego układu z większymi fontami i stylem listy insetGrouped.
 
 ### 4.3 DetailView (DetailView.swift)
 

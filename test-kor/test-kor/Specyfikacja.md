@@ -2,7 +2,7 @@
 
 ## 1. Krótki opis projektu
 
-KORMIX Planer to aplikacja mobilna na systemy iOS, iPadOS, macOS oraz visionOS, służąca do śledzenia i zarządzania harmonogramem wywozu odpadów komunalnych. Aplikacja umożliwia użytkownikom dodawanie adresów, konfigurację częstotliwości wywozu, automatyczne obliczanie kolejnych terminów z uwzględnieniem polskich świąt i dni roboczych, ręczne ustawianie dat, potwierdzanie wykonanych wywozów oraz przeglądanie historii. Dane przechowywane są lokalnie w bazie SwiftData, a dostęp do aplikacji może być zabezpieczony kodem PIN haszowanym algorytmem SHA256.
+KORMIX Planer to aplikacja mobilna na systemy iOS i iPadOS służąca do śledzenia i zarządzania harmonogramem wywozu odpadów komunalnych. Aplikacja umożliwia użytkownikom dodawanie adresów, konfigurację częstotliwości wywozu, automatyczne obliczanie kolejnych terminów z uwzględnieniem polskich świąt i dni roboczych, ręczne ustawianie dat, potwierdzanie wykonanych wywozów oraz przeglądanie historii. Dane przechowywane są lokalnie w bazie SwiftData, a dostęp do aplikacji może być zabezpieczony kodem PIN haszowanym algorytmem SHA256.
 
 ---
 
@@ -28,7 +28,7 @@ KORMIX Planer to aplikacja mobilna na systemy iOS, iPadOS, macOS oraz visionOS, 
 
 ## 4. Potencjalni odbiorcy systemu
 
-**Zarząd firmy kormix.** 
+**Zarząd firmy Kormix.** 
 
 ---
 
